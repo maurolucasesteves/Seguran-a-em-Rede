@@ -1,0 +1,17 @@
+Vamos ilustrar um ataque DoS com o Slowloris:
+
+Baixar o servidor usado para os testes nesse https://drive.google.com/file/d/0BzmYQVmw4W7nR1dYcHFjQ1lZSWs/view?usp=sharing&resourcekey=0-QL6IHtYDP1G8Ix6DcP-xqQ e extraia para uma pasta de sua preferência
+Uma vez que o arquivo foi baixado, devemos configurá-lo no VirtualBox. Clique na aba Novo e dê um nome para a máquina virtual (Por exemplo: Servidor)
+Ajuste o tamanho de memória para seu computador, o mínimo que eu recomendo seria 512MB. Na sequência selecionar a opção Utilizar um disco rígido virtual existente e escolher o arquivo extraído na etapa anterior. Feito isso clique no botão Criar
+Vá até a aba Configurações e altere a placa de rede do servidor para Conectado a: Placa em modo bridge
+Inicialize o servidor, para logar, entre com usuário e senha: msfadmin
+Verifique qual é seu endereço IP digitando o comando: ifconfig
+[img] https://s3.amazonaws.com/caelum-online-public/seguranca-redes/Metasploit.JPG
+Com esse endereço IP, vá até a máquina do Hacker e coloque na URL esse endereço IP. Clique no link da Mutillidae e verifique que tudo está funcionando normalmente.
+No Kali Linux, abra o terminal e digite: git clone https://github.com/llaera/slowloris.pl.git.
+Verifique se o diretório slowloris.pl foi criado digitando o comando: ls.
+Mude para o diretório do slowloris.pl digitando: cd slowloris.pl/.
+Mude a permissão para que seja possível executar o programa através do comando: chmod +x slowloris.pl.
+Rode o programa com: ./slowloris.pl.
+Veja que o slowloris mostra como devemos rodar o programa, coloque no terminal: perl ./slowloris.pl -dns [IP servidor] -timeout 1.
+Abra um browser do seu computador e tente acessar a página da Mutillidae: [IP do servidor]/mutillidae.
