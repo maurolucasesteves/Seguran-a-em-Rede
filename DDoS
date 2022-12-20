@@ -1,0 +1,45 @@
+Distributed Denial of Service (DDoS)
+O que consiste um ataque DDoS?
+O ataque de DDoS consiste em distribuir o ataque entre vários usuários. Uma vez que várias máquinas estão realizando a comunicação com tal serviço, 
+é possível que ocorra um comprometimento desse serviço (por exemplo, saturando o link) tornando-o assim indisponível.
+
+O ataque DDoS (Distributed Denial of Service) consiste em tirar a concentração do ataque em um usuário, como é feito no ataque de DoS e distribuir o ataque por vários usuários. Isso pode ser obtido por exemplo quando usuários fazem download de arquivos infectados. Uma vez que tais máquinas foram infectadas, o Hacker poderá controlá-las para que possa assim iniciar um ataque distribuído contra um serviço. 
+O objetivo de tal ataque seria de causar uma "saturação" no link do alvo e com isso torná-lo indisponível para que outros usuários acessem o serviço.
+
+O que são as chamadas Botnets em um ataque DDoS?
+Botnets é um termo usado para referenciar máquinas que foram infectadas e podem ser assim usadas para realizar um ataque.
+Uma botnet é um grupo de máquinas que foram comprometidas de alguma forma (por exemplo vírus, malware, etc). Tais máquinas infectadas passam a ser usadas por hackers para fazerem ataques contra um determinado serviço a fim de torná-lo indisponível. Pelo fato de termos várias máquinas atuando nesse ataque, chamamos esse de um ataque de negação de serviços distribuído (DDoS).
+O DDos é um dos ataques mais comuns e também um dos mais temidos por organizações, uma vez que torna-se difícil a identificação dos dispositivos envolvidos e sua prevenção. Segue abaixo os links mostrados das reportagens dos atques DDoS:
+https://krebsonsecurity.com/2016/11/new-mirai-worm-knocks-900k-germans-offline/
+http://www.ibtimes.co.uk/anonymous-hacktivists-launch-ddos-attacks-against-websites-donald-trump-1552750
+
+Quando realizamos o ataque com o slowloris, conseguimos comprometer o servidor ao abrir uma série de portas e conexões com ele. 
+Por não haver nenhum equipamento de detectasse ou prevenisse ataques (IDS ou IPS), ele aconteceu facilmente. 
+Com um desses equipamentos, o cenário seria diferente.
+Agora o hacker não vai mais tentar fazer esse ataque sozinho. 
+Ele terá um grupo de pessoas engajado em ajudá-lo. A ideia dele é comprometer o computador de duas vítimas, 
+que chamaremos de Pedro e João, para tentar indisponibilizar o serviço. O ataque estará distribuído em várias máquinas, 
+que estão tentando comprometer o servidor mandando uma grande quantidade de tráfego.
+[img](https://s3.amazonaws.com/caelum-online-public/Seguran%C3%A7a_de_redes/Aula+3/Aula3.3_01_duas-vitimas.png)
+Essas duas máquinas, que comprometemos no intuito de ter ajuda em um ataque, são chamadas de **Botnet**. 
+O hacker faz com que essas máquinas pertençam ao seu exército para auxiliar em seus ataques.
+[img](https://s3.amazonaws.com/caelum-online-public/Seguran%C3%A7a_de_redes/Aula+3/Aula3.3_02_botnet.png)
+Isso pode ser feito por meio de vírus ou malware, que ao serem recebidos, sequestram as máquinas para o exército do hacker. 
+Por ser distribuído, o ataque é chamado de ***Distributed Denial of Service***, ou DDoS. No português ficaria "Ataque de negação de serviço distribuído".
+[img](https://s3.amazonaws.com/caelum-online-public/Seguran%C3%A7a_de_redes/Aula+3/Aula3.3_03_ddos.png)
+Esse é um dos ataques mais temidos por organizações, não porque o objetivo principal do ataque seja roubar informações ou algo assim, mas por sua difícil detecção. 
+Como o ataque é realizado por várias máquinas em diferentes localidades do mundo, é difícil saber quem está fazendo um acesso legítimo ao site e quem está acessando de maneira indevida. 
+Fica bem complicado de descobrir quais são as máquinas (e os seus IPs) que estão participando do ataque ou acessando o servidor de maneira ilegal.
+Por isso, o DDoS não é apenas um dos ataques mais temidos, mas também um dos mais efetivos. Durante a minha pesquisa para montar o curso, encontrei alguns ataques DDoS recentes. Dentre eles, 
+selecionei duas notícias interessantes.
+[img](https://s3.amazonaws.com/caelum-online-public/Seguran%C3%A7a_de_redes/Aula+3/Aula3.3_04_mirai-worm.png)
+A primeira delas, disponível http://krebsonsecurity.com/2016/11/new-mirai-worm-knocks-900k-germans-offline/, fala sobre um vírus (*worm*) do malware Mirai que conseguiu derrubar 900 mil pessoas na Alemanha. 
+Acredita-se que o botnet do Mirai gira por volta de 400 mil máquinas. 
+Imagine só o impacto dessa imensa quantidade de máquinas realizando um ataque a um servidor de determinada empresa. 
+É uma quantidade de tráfego muito grande.
+http://www.ibtimes.co.uk/anonymous-hacktivists-launch-ddos-attacks-against-websites-donald-trump-1552750 fala do grupo Anonymus.
+[img](https://s3.amazonaws.com/caelum-online-public/Seguran%C3%A7a_de_redes/Aula+3/Aula3.3_05_ibt-anonymus.png)
+
+O grupo estava tentando realizar um ataque de DDoS contra os sites de hotéis e outros empreendimentos do presidente dos EUA Donald Trump. Lendo essa reportagem, descobrimos que eles estavam perto de alcançar um terabyte de tráfego nesses servidores. E por causa disso, o link tende a não suportar essa demanda e o link fica indisponível.
+
+Imagine uma situação dessas para empresas como a Amazon, o Facebook e outras com um grande volume de clientes. Eles teriam uma grande perda de receita. É um impacto muito grande, que junto com a dificuldade de identificar quem está efetivamente o realizando, torna os ataques de DDoS muito devastadores e temidos.
