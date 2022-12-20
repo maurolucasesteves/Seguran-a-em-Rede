@@ -1,0 +1,51 @@
+Como o protocolo ARP ajuda na comunicação e mapeamento dos endereços IPs para os endereços mac. Vamos ver um pouco mais a fundo como esse protocolo funciona.
+Suponha que João queira acessar um site de notícias, o Uol, por exemplo. E, pelo fato de esse site não estar na mesma rede que eu, ele precisa passar a informação pelo default gateway, o roteador. Ele encontrará uma forma de se comunicar com o servidor da Uol.
+Teremos, então, o computador da vítima conectado a um switch, que estará conectado a um roteador.
+O switch sabe que a mensagem do AA-xxxxx-AA é destinado ao BB-xxxxx-BB, que já está em sua tabela, lembrando que o switch lê apenas endereços mac. Agora o computador saberá que o IP 192.168.1.1 está pareado com o endereço mac AA-xxxxx-AA.
+O protocolo ARP não verifica quem envia cada informação – e um hacker pode se aproveitar disso. Ele vai se colocar no meio dessa comunicação, na porta f0/1 e tentar enganar tanto a vítima quanto o roteador.
+[image]https://s3.amazonaws.com/caelum-online-public/Seguran%C3%A7a_de_redes/Aula+2/Aula2.1_06_hacker-se-conecta.jpg
+O hacker dirá para a vítima que o IP que ele está buscando possui o endereço mac CC-xxxxx-CC, que é seu próprio mac. 
+E ele insistirá na mensagem, como uma criança pequena com os pais no supermercado, que insiste até que eles comprem o produto desejado. 
+Usando a persistência do protocolo ARP, o hacker enviará essa mensagem até que a tabela ARP da vítima esteja atualizada com o seu endereço mac. 
+Com essa comunicação, o switch vai armazenar a informação de que o endereço mac CC-xxxxx-CC está na porta f0/1. 
+Ele repetirá o processo até convencer o roteador de que o endereço mac correspondente ao IP 192.168.1.2 é também o seu, CC-xxxxx-CC.
+[image]https://s3.amazonaws.com/caelum-online-public/Seguran%C3%A7a_de_redes/Aula+2/Aula2.1_07_mac-do-hacker.png
+Assim que os dois dispositivos estiverem convencidos de que o endereço mac do hacker é o que eles procuram, ele passará a intermediar toda a comunicação. Suponha que a vítima queira acessar um site da internet, como a da Uol. Sabemos que ela terá que passar a informação para o roteador, usando como referência o endereço mac de sua tabela ARP. Entretanto, o endereço que ela tem agora é o do hacker! Assim, ele encaminha esse pacote de informação para o hacker, via switch. Este, por sua vez, olha esse pacote de informação e o endereço mac, que é tudo que ele consegue ler, e, sabendo que o endereço indicado está na porta f0/1, manda o pacote para lá. Ou seja, direto para o hacker.
+O hacker vai agir como um cara bacana, e vai deixar a vítima acessar as páginas desejadas da internet, mandando o pedido para o roteador. 
+O roteador verá que essa requisição veio de um dispositivo com o IP 192.168.1.2, e segundo sua tabela ARP, o endereço mac correspondente é CC-xxxxx-CC. 
+Então ele devolve a resposta para o switch, encaminhando para o hacker novamente, quem realmente tem o mac CC-xxxxx-CC.
+Como o hacker quer que a vítima leia a informação pedida, fará o encaminhamento. 
+Percebe o que aconteceu? O hacker consegue ver tudo o que a vítima manda para o roteador, e tudo que ele devolve. 
+O hacker se colocou no meio da comunicação, e por isso esse tipo de ataque é chamado de man-in-the-middle ("o homem no meio da comunicação"), também referida como MITM.
+O que consiste o ataque Man In the Middle (MITM)?
+O ataque consiste em manipular a tabela ARP de dispositivios para que o Hacker fique assim no meio da comunicação e possa visualizar o tráfego.
+O ataque Man In The Middle consiste em explorar a forma sem estado (stateless) na qual o protocolo ARP trabalha. Dessa forma, um Hacker pode usar de ferramentas para enviar respostas desse protocolo com o intuito de manipular a tabela ARP de suas vítimas para ficar assim no meio da comunicação e visualizar o que é trafegado entre os dispositivos manipulados.
+Nessa etapa, o Kali Linux e a máquina virtual do Windows (caso seja utilizada) deverão estar com as placas de rede configuradas em Conectado a: Placa em modo Bridge
+Vá ao Kali Linux, abra o terminal e faça a instalação da ferramenta para realizar o ataque: apt-get install mitmf
+Uma vez que o download foi concluído, rode o ataque com o seguinte comando: mitmf --arp --spoof --target [IP vítima] --gateway [IP roteador] -i [interface]
+Volte ao computador da vítima e abra a página de login: http://exemplo-login-fraco-alura.herokuapp.com/login (Pode demorar um pouco para a página carregar, caso não carregue na primeira vez, espera alguns minutos e dê o refresh na página).
+Faça o "cadastro" e pressione o botão Logar.
+
+DNS Spoofing
+O que consiste o ataque de DNS Spoofing?
+O ataque de DNS Spoofing consiste em alterar a tradução entre URL e endereço IP para que essa url seja redirecionada a um endereço IP de controle do Hacker.
+O ataque de DNS Spoofing consiste em alterar a tradução da URL para um endereço IP que seja de domínio do Hacker.
+Vamos agora alterar a tradução DNS para ser redirecionada para um IP de nosso controle:
+Interrompa o teste anterior do MITM pressionando CTRL + C
+No terminal coloque um editor de sua preferência, como o Gedit.
+Altere a URL do blog da Alura para o endereço IP do Kali Linux e salve o arquivo.
+[image]https://s3.amazonaws.com/caelum-online-public/seguranca-redes/DNS_spoofing.JPG
+Vá até a opção Show Applications e digite no campo de busca Leafpad
+Abra o Leafpad e digite o seguinte código
+<html>
+<h1>Curso segurança redes da Alura :)</h1>
+</html>
+Salve esse arquivo dentro do diretório /var/www/html com o nome index.html.
+Abra outro terminal e inicialize o servidor da apache com o seguinte comando: service apache2 start.
+Volte ao primeiro terminal do Kali Linux e execute o ataque com o seguinte código:
+mitmf --arp --spoof --target [IP vítima] --gateway [IP roteador] -i [interface] --dns
+No computador da vítima feche todas as janelas, abra o browser novamente e limpe o cache, posteriormente digite: blog.alura.com.br. Qual o resultado?
+***************************Não clone páginas de websites sem autorização!*********************************
+
+
+
