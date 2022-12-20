@@ -15,3 +15,23 @@ Mude a permissão para que seja possível executar o programa através do comand
 Rode o programa com: ./slowloris.pl.
 Veja que o slowloris mostra como devemos rodar o programa, coloque no terminal: perl ./slowloris.pl -dns [IP servidor] -timeout 1.
 Abra um browser do seu computador e tente acessar a página da Mutillidae: [IP do servidor]/mutillidae.
+
+Proteção contra DoS
+Poderíamos ter equipamentos na rede que fazem detecção de possíveis ataques como o Intrusion Detection System (IDS) ou prevenção desses ataques como o Intrusion Prevention System (IPS).
+As redes corporativas possuem alguns equipamentos com o objetivo de verificar o tipo de tráfego que é enviado por seus usuários e caso esse tráfego represente algum possível ataque, que alguma medida seja tomada para evitar que esse ataque se propague.
+
+Equipamentos que temos nas redes são por exemplo o Intrusion Detection System (IDS) que recebe cópias desse tráfego e caso alguma anomalia seja detectada, 
+o equipamento manda alarmes para que assim os administradores da rede possam saber o ocorrido e procurar uma solução. 
+Outra solução seria a utilização de equipamentos como o Intrusion Prevention System (IPS) que é capaz de detectar anomalias no tráfego e impedir que esse tráfego seja propagado para outros pontos da rede.
+
+Qual seria uma diferença entre o Intrusion Detection System (IDS) e o Intrusion Prevention System (IPS)?
+O Intrusion Detection System é capaz de detectar o ataque mas não impedí-lo como o IPS é capaz de fazer.
+O Intrusion Detection System (IDS) recebe apenas cópias dos tráfego, dessa forma, ele não é capaz de impedir que um ataque seja propagado para outros pontos da nossa rede. Ele irá encaminhar alarmes para que possamos assim saber dos problemas que foram detectados e encontrar soluções.
+
+O Intrusion Prevention System (IPS) é conectado diretamente na rede, dessa forma, ao analisar algum tipo de anomalia o IPS é capaz de impedir que esse tráfego seja propagado para outros pontos da minha rede.
+
+Parece que o IDS seja a melhor solução porque ele recebe somente cópias do tráfego e não é conectado diretamente na rede.
+
+Uma vez que o diretor técnico nos informou que uma queda no link é muito prejudicial, podemos oferecer inicialmente a solução do Intrusion Detection System (IDS). Isso porque o IDS não é conectado em linha (in-line) com a rede e se tivermos algum tipo de reparo que seja necessário, não terá impacto na rede do cliente.
+Ao mesmo tempo, o IDS recebe cópias do tráfego e com isso caso alguma anomalia seja detectada, poderá enviar alarmes para os administradores da rede para que seja possível assim encontrar uma solução para os problemas detectados.
+Obs: Embora muitas vezes o IPS possa ser a melhor opção, existem cenários que o IDS pode atender melhor a necessidade do cliente. Quem no fim vai pesar as vantagens e desvantagens é o cliente.
